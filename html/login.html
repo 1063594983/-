@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>登录页面</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        header {
+            position: relative;
+            height: 50px;
+            width: 100%;
+            background-color: #20B2AA;
+            color: #fff;
+            display: flex;
+            flex-flow: row;
+        }
+
+        header .left {
+            height: 50px;
+            line-height: 14px;
+            font-size: 14px;
+            position: relative;
+            top: 18px;
+            flex: 1;
+            text-align: center;
+        }
+
+        header .title {
+            position: relative;
+            height: 50px;
+            line-height: 50px;
+            flex: 5;
+            text-align: center;
+        }
+
+        header .right {
+            position: relative;
+            height: 50px;
+            line-height: 14px;
+            font-size: 14px;
+            flex: 1;
+            text-align: center;
+            top: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <div class="left">
+            返回
+        </div>
+        <h1 class="title">登录</h1>
+        <div class="right" tapemode onclick="turnToRegister()">
+            注册
+        </div>
+    </header>
+    <form>
+        <div class="form-group">
+            <label for="username">用户名:</label>
+            <input type="text" class="form-control" id="username">
+        </div>
+        <div class="form-group">
+            <label for="password">密码:</label>
+            <input type="password" class="form-control" id="password">
+        </div>
+        <button type="submit" class="btn btn-success" id="button" onclick="handleLogin()">登录</button>
+    </form>
+</body>
+
+</html>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+
+    }
+
+    function handleLogin() {
+        var username = $api.byId('username').value;
+        var password = $api.byId('password').value;
+        var msg = check(username, password);
+    }
+
+    function turnToRegister() {
+      api.openWin({
+          name: 'register',
+          url: './register.html',
+          pageParam: {
+              name: 'test'
+          }
+      });
+
+    }
+</script>
